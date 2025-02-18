@@ -27,16 +27,42 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .navbar {
     background-color: #060D17;
-    
+
 }
+
 .navbar-light .navbar-nav .nav-link {
     color: white;
+}
+
+/* افتراضيًا يكون حجم اللوجو صغير */
+.navbar-brand img {
+    width: 75%;
+    /* الحجم الافتراضي */
+}
+
+/* عند الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 100% !important;
+        /* تكبير اللوجو على الشاشات الصغيرة */
+        max-width: 300px !important;
+        /* يمكن تحديد حد أقصى لحجم اللوجو إذا أردت */
+    }
+}
+
+.navbar-toggler-icon {
+    filter: invert(1) brightness(1000%);
 }
 
 h1 {
@@ -117,6 +143,7 @@ h1 {
 .next-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 .carousel-container {
     display: flex;
     align-items: center;
@@ -139,7 +166,8 @@ h1 {
     display: none;
 }
 
-.prev-btn, .next-btn {
+.prev-btn,
+.next-btn {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -158,9 +186,11 @@ h1 {
     right: 10px;
 }
 
-.prev-btn:hover, .next-btn:hover {
+.prev-btn:hover,
+.next-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 #searchResults {
     display: flex;
     flex-wrap: wrap;
@@ -168,6 +198,6 @@ h1 {
     justify-content: center;
 }
 
-.watchlisttt{
+.watchlisttt {
     background-color: #060D17;
 }

@@ -25,17 +25,34 @@ function displayMovies(movies, containerId) {
         movies.forEach(movie => {
             let poster = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "placeholder.jpg";
             cartona += `
-            <div class="card" style="width: 18rem; margin: 10px;">
-                <img src="${poster}" class="card-img-top" alt="${movie.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${movie.title}</h5>
-                    <p class="card-text"><strong>التقييم:</strong> ⭐ ${movie.vote_average.toFixed(1)}</p>
-                    <p class="card-text"><strong>تاريخ الإصدار:</strong> ${movie.release_date}</p>
-                    <p class="card-text">${movie.overview ? movie.overview.slice(0, 100) + "..." : "لا يوجد وصف متاح"}</p>
-                    <a href="movie-details.html?id=${movie.id}" class="btn btn-primary margin-bottom: vh">عرض التفاصيل</a>
-                    <button onclick="addToWatchlist(${movie.id}, '${movie.title}', '${poster}')" class="btn btn-warning">+ أضف إلى المشاهدة</button>
-                </div>
-            </div>
+<div class="card" style="width: 18rem; margin: 10px;">
+    <img src="${poster}" class="card-img-top" alt="${movie.title}">
+    <div class="card-body">
+        <h5 class="card-title">${movie.title}</h5>
+        <p class="card-text"><strong>التقييم:</strong> ⭐ ${movie.vote_average.toFixed(1)}</p>
+        <p class="card-text"><strong>تاريخ الإصدار:</strong> ${movie.release_date}</p>
+        <p class="card-text">${movie.overview ? movie.overview.slice(0, 100) + "..." : "لا يوجد وصف متاح"}</p>
+        <div class="buttons">
+            <a href="movie-details.html?id=${movie.id}" class="btn btn-primary">عرض التفاصيل</a>
+            <button onclick="addToWatchlist(${movie.id}, '${movie.title}', '${poster}')" class="btn btn-warning">+ أضف إلى المشاهدة</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* إضافة مسافة صغيرة بين الزر والرابط */
+    }
+
+    .buttons .btn {
+        flex: 1; /* يضمن أن الأزرار لها نفس الحجم */
+        text-align: center;
+    }
+</style>
+
             `;
         });
     }
